@@ -1,9 +1,17 @@
 package org.example.odoruprojetnote.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 
+@Getter
+@Setter
+@Table(name = "membres")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class Membres {
     @Id
@@ -11,19 +19,24 @@ public class Membres {
     private Long id;
 
     private String nomUser;
+
     private String mdp;
+
     private String nomF;
+
     private String prenom;
+
     private String mel;
-    private String Adresse;
-    private String Ville;
-    private String Pays;
-    private int Niveau;
-    private boolean Secretaire;
-    private boolean Enseignant;
+
+    private String adresse;
+
+    private String ville;
+    private String pays;
+
+    private int niveau;
+
+    @Enumerated(EnumType.STRING)
+    private Roles role;
 
 
-    public void setNiveau(int niveau) {
-        Niveau = niveau;
-    }
 }
